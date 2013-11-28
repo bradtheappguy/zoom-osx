@@ -26,17 +26,25 @@
   //[_statusItem setView:dragView];
   
   NSMenu *customMenu = [[NSMenu alloc] init];
+  [customMenu setAutoenablesItems:NO];
   
   NSMenuItem *item1 = [customMenu insertItemWithTitle:NSLocalizedString(@"Select File...", @"Select File - Menu Item") action:@selector(selectFile:) keyEquivalent:@"" atIndex:0];
   [item1 setTarget:self];
   
   [customMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
   
+  NSMenuItem *item3 = [customMenu insertItemWithTitle:NSLocalizedString(@"Recent Uploads", @"Select File - Menu Item") action:@selector(selectFile:) keyEquivalent:@"" atIndex:2];
   
-  NSMenuItem *item2 = [customMenu insertItemWithTitle:NSLocalizedString(@"Quit", @"Quit - Menu Item") action:@selector(quit:) keyEquivalent:@"" atIndex:2];
+  [item3 setTarget:self];
+  
+  
+  [customMenu insertItem:[NSMenuItem separatorItem] atIndex:3];
+  
+  NSMenuItem *item2 = [customMenu insertItemWithTitle:NSLocalizedString(@"Quit", @"Quit - Menu Item") action:@selector(quit:) keyEquivalent:@"" atIndex:4];
   [item2 setTarget:self];
   [_statusItem setMenu:customMenu];
   
+  [item3 setEnabled:NO];
 
 }
 
