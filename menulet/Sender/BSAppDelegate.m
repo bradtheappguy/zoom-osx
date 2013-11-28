@@ -9,12 +9,13 @@
 #import "BSAppDelegate.h"
 #import "BSUploadManager.h"
 #import "BSDataStore.h"
+#import "PFMoveApplication.h"
 
 @implementation BSAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-  
+  PFMoveToApplicationsFolderIfNecessary();
   query = [[NSMetadataQuery alloc] init];
   
   //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidStartGatheringNotification object:query];

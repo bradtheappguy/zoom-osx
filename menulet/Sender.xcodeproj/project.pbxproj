@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4135086AD9744D53BC89AEB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A3CA187C34473394E5BBEF /* libPods.a */; };
+		A248879C1847728500604213 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A248879B1847728500604213 /* Images.xcassets */; };
+		A24887EA184774B800604213 /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = A24887C8184774B800604213 /* NSString+SymlinksAndAliases.m */; };
+		A24887EB184774B800604213 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A24887CA184774B800604213 /* PFMoveApplication.m */; };
 		A2F7BA241846D66E00C0E91C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F7BA231846D66E00C0E91C /* Cocoa.framework */; };
 		A2F7BA2E1846D66E00C0E91C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA2C1846D66E00C0E91C /* InfoPlist.strings */; };
 		A2F7BA301846D66E00C0E91C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA2F1846D66E00C0E91C /* main.m */; };
@@ -41,6 +44,11 @@
 /* Begin PBXFileReference section */
 		00A3CA187C34473394E5BBEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E9549E6D72D4BF3BCD35EA7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A248879B1847728500604213 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A24887C7184774B800604213 /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SymlinksAndAliases.h"; path = "ExternalLetsMove/NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
+		A24887C8184774B800604213 /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SymlinksAndAliases.m"; path = "ExternalLetsMove/NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
+		A24887C9184774B800604213 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFMoveApplication.h; path = ExternalLetsMove/PFMoveApplication.h; sourceTree = "<group>"; };
+		A24887CA184774B800604213 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFMoveApplication.m; path = ExternalLetsMove/PFMoveApplication.m; sourceTree = "<group>"; };
 		A2F7BA201846D66E00C0E91C /* Sender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7BA231846D66E00C0E91C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A2F7BA261846D66E00C0E91C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -100,6 +108,10 @@
 		A2F7BA171846D66E00C0E91C = {
 			isa = PBXGroup;
 			children = (
+				A24887C7184774B800604213 /* NSString+SymlinksAndAliases.h */,
+				A24887C8184774B800604213 /* NSString+SymlinksAndAliases.m */,
+				A24887C9184774B800604213 /* PFMoveApplication.h */,
+				A24887CA184774B800604213 /* PFMoveApplication.m */,
 				A2F7BA291846D66E00C0E91C /* Sender */,
 				A2F7BA471846D66F00C0E91C /* SenderTests */,
 				A2F7BA221846D66E00C0E91C /* Frameworks */,
@@ -157,6 +169,7 @@
 				A2F7BA681847259800C0E91C /* BSDataStore.m */,
 				A2F7BA6A1847265F00C0E91C /* BSUploadedFile.h */,
 				A2F7BA6B1847265F00C0E91C /* BSUploadedFile.m */,
+				A248879B1847728500604213 /* Images.xcassets */,
 			);
 			path = Sender;
 			sourceTree = "<group>";
@@ -255,6 +268,21 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
+				Danish,
+				Dutch,
+				English,
+				French,
+				German,
+				Italian,
+				Japanese,
+				ko,
+				nb,
+				Portuguese,
+				"pt-BR",
+				Russian,
+				Spanish,
+				"zh-Hans",
 			);
 			mainGroup = A2F7BA171846D66E00C0E91C;
 			productRefGroup = A2F7BA211846D66E00C0E91C /* Products */;
@@ -275,6 +303,7 @@
 				A2F7BA2E1846D66E00C0E91C /* InfoPlist.strings in Resources */,
 				A2F7BA341846D66E00C0E91C /* Credits.rtf in Resources */,
 				A2F7BA5B1846DC7A00C0E91C /* icon_menulet@2x.png in Resources */,
+				A248879C1847728500604213 /* Images.xcassets in Resources */,
 				A2F7BA661847150D00C0E91C /* icon_menulet_blue@2x.png in Resources */,
 				A2F7BA3A1846D66E00C0E91C /* MainMenu.xib in Resources */,
 			);
@@ -332,10 +361,12 @@
 				A2F7BA5E1846DF7B00C0E91C /* DragStatusView.m in Sources */,
 				A2F7BA301846D66E00C0E91C /* main.m in Sources */,
 				A2F7BA611846E8D900C0E91C /* BSUploadManager.m in Sources */,
+				A24887EA184774B800604213 /* NSString+SymlinksAndAliases.m in Sources */,
 				A2F7BA371846D66E00C0E91C /* BSAppDelegate.m in Sources */,
 				A2F7BA591846D6AA00C0E91C /* BSMenuet.m in Sources */,
 				A2F7BA6C1847265F00C0E91C /* BSUploadedFile.m in Sources */,
 				A2F7BA691847259800C0E91C /* BSDataStore.m in Sources */,
+				A24887EB184774B800604213 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
