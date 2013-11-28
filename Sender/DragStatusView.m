@@ -7,7 +7,7 @@
 //
 
 #import "DragStatusView.h"
-#import <AFNetworking/AFNetworking.h>
+#import "BSUploadManager.h"
 
 @implementation DragStatusView
 
@@ -45,7 +45,9 @@
   
   if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
     NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-    NSLog(@"Files: %@",files);
+    for (NSString *fileName in files) {
+      [[BSUploadManager sharedInstance] uploadFile:fileName];
+    }
   }
   return YES;
 }

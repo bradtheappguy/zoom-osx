@@ -22,6 +22,7 @@
 		A2F7BA591846D6AA00C0E91C /* BSMenuet.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA581846D6AA00C0E91C /* BSMenuet.m */; };
 		A2F7BA5B1846DC7A00C0E91C /* icon_menulet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA5A1846DC7A00C0E91C /* icon_menulet@2x.png */; };
 		A2F7BA5E1846DF7B00C0E91C /* DragStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */; };
+		A2F7BA611846E8D900C0E91C /* BSUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA601846E8D900C0E91C /* BSUploadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		A2F7BA5A1846DC7A00C0E91C /* icon_menulet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menulet@2x.png"; sourceTree = "<group>"; };
 		A2F7BA5C1846DF7B00C0E91C /* DragStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragStatusView.h; sourceTree = "<group>"; };
 		A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragStatusView.m; sourceTree = "<group>"; };
+		A2F7BA5F1846E8D900C0E91C /* BSUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSUploadManager.h; sourceTree = "<group>"; };
+		A2F7BA601846E8D900C0E91C /* BSUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSUploadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				A2F7BA581846D6AA00C0E91C /* BSMenuet.m */,
 				A2F7BA5C1846DF7B00C0E91C /* DragStatusView.h */,
 				A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */,
+				A2F7BA5F1846E8D900C0E91C /* BSUploadManager.h */,
+				A2F7BA601846E8D900C0E91C /* BSUploadManager.m */,
 			);
 			path = Sender;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			files = (
 				A2F7BA5E1846DF7B00C0E91C /* DragStatusView.m in Sources */,
 				A2F7BA301846D66E00C0E91C /* main.m in Sources */,
+				A2F7BA611846E8D900C0E91C /* BSUploadManager.m in Sources */,
 				A2F7BA371846D66E00C0E91C /* BSAppDelegate.m in Sources */,
 				A2F7BA591846D6AA00C0E91C /* BSMenuet.m in Sources */,
 			);
