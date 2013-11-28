@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BSUploadedFile.h"
 
 @interface BSUploadManager : NSObject
 
 + (id)sharedInstance;
 - (void) uploadFileURL:(NSURL *)fileURL;
 - (void) uploadFile:(NSString *)path;
-
+- (void) deleteFile:(BSUploadedFile *)file;
 @end

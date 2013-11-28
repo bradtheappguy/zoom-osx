@@ -7,11 +7,42 @@
 //
 
 #import "BSAppDelegate.h"
+#import "BSUploadManager.h"
+#import "BSDataStore.h"
 
 @implementation BSAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+  
+  query = [[NSMetadataQuery alloc] init];
+  
+  //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidStartGatheringNotification object:query];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidUpdateNotification object:query];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidFinishGatheringNotification object:query];
+  
+  [query setDelegate:self];
+  [query setPredicate:[NSPredicate predicateWithFormat:@"(kMDItemIsScreenCapture = 1) && (kMDItemFSCreationDate > '$time.now')"]];
+  [query startQuery];
+  
+}
+
+-(void) applicationWillTerminate:(NSNotification *)notification {
+  [query stopQuery];
+  [query setDelegate:nil];
+  [self setQueryResults:nil];
+}
+
+- (void)queryUpdated:(NSNotification *)note {
+  [self setQueryResults:[query results]];
+  
+  for (NSMetadataItem *item in self.queryResults) {
+      id filePath = [item valueForKey:(NSString *)kMDItemPath];
+      NSLog(@"Found screenshot: %@",filePath);
+    if ([[BSDataStore sharedInstance] autoUpdateScreenShots]) {
+      [[BSUploadManager sharedInstance] uploadFile:filePath];
+    }
+  }
 }
 
 

@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface BSUploadedFile : NSObject {
-  NSString *_page;
 }
 
 -(id) initWithJSON:(id)json;
+-(NSString *) fileName;
 
 @property (readonly) NSString *page;
+@property (readonly) NSDate *createdAt;
+@property (readwrite) NSURL *originalFile;
+@property (readonly) NSString *deleteToken;
 
 @end

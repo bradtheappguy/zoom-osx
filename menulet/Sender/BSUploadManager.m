@@ -8,7 +8,6 @@
 
 #import "BSUploadManager.h"
 #import "BSCompletedStatusWindow.h"
-#import "BSUploadedFile.h"
 #import "BSDataStore.h"
 
 #import <AFNetworking/AFNetworking.h>
@@ -28,18 +27,20 @@
 
 - (void) uploadFileURL:(NSURL *)fileURL {
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-  NSDictionary *parameters = @{@"foo": @"bar"};
   
-  NSString *uploadURLString = @"http://warm-rave.herokuapp.com/uploads.json";
-  //NSString *uploadURLString = @"http://localhost:4000/uploads.json";
   
-  [manager POST:uploadURLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+  //NSString *uploadURLString = @"http://warm-rave.herokuapp.com/uploads.json";
+  NSString *uploadURLString = @"http://localhost:4000/uploads.json";
+  
+  [manager POST:uploadURLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [formData appendPartWithFileURL:fileURL name:@"upload[attachment]" error:nil];
   } success:^(AFHTTPRequestOperation *operation, id responseObject) {
     if ([NSJSONSerialization isValidJSONObject:responseObject]) {
       
       
       BSUploadedFile *file = [[BSUploadedFile alloc] initWithJSON:responseObject];
+      [file setOriginalFile:fileURL];
+      
       [[BSDataStore sharedInstance] addUploadedFile:file];
       
       
@@ -62,11 +63,9 @@
                                  panel.frame.size.height) display:YES];
       
       
-      NSURLComponents *components = [NSURLComponents componentsWithURL:fileURL resolvingAgainstBaseURL:NO];
-      NSArray *parts = [[components path] componentsSeparatedByString:@"/"];
-      NSString *filename = [parts lastObject];
+
       
-      [panel.textField setStringValue:filename];
+      [panel.textField setStringValue:[file fileName]];
       [panel setIsVisible:YES];
       
       [panel performSelector:@selector(hide) withObject:nil afterDelay:2.5];
@@ -84,4 +83,15 @@
   [self uploadFileURL:fileURL];
 }
 
+
+- (void) deleteFile:(BSUploadedFile *)file {
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+  [manager DELETE:file.page parameters:@{@"delete_token": file.deleteToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"Deleted");
+    [[BSDataStore sharedInstance] removeFile:file];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+    NSLog(@"failed to delete");
+  }];
+}
 @end

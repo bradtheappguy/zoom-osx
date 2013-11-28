@@ -35,7 +35,7 @@
   NSMenu *customMenu = [[NSMenu alloc] init];
   [customMenu setAutoenablesItems:NO];
   
-  NSMenuItem *item1 = [customMenu insertItemWithTitle:NSLocalizedString(@"Select File...", @"Select File - Menu Item") action:@selector(selectFile:) keyEquivalent:@"" atIndex:0];
+  NSMenuItem *item1 = [customMenu insertItemWithTitle:NSLocalizedString(@"Upload File...", @"Select File - Menu Item") action:@selector(selectFile:) keyEquivalent:@"" atIndex:0];
   [item1 setTarget:self];
   
   [customMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
@@ -45,11 +45,71 @@
   [item3 setTarget:self];
   
   NSArray *recentlyUploadedIteme = [[BSDataStore sharedInstance] recentlyUploadedFiles];
+  
+  _menuToFileMapping = [[NSMutableDictionary alloc] init];
+  int index = 0;
   for (BSUploadedFile *file in recentlyUploadedIteme) {
-    NSMenuItem *item = [customMenu insertItemWithTitle:[file page] action:nil keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
-    [item setTarget:self];
+    NSMenuItem *item = [customMenu insertItemWithTitle:[file fileName] action:nil keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
+    
+    NSMenu *subMenu = [[NSMenu alloc] init];
+    
+    [_menuToFileMapping setValue:file forKey:[NSString stringWithFormat:@"%d",index]];
+    
+    [subMenu setAutoenablesItems:NO];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MMM dd, 2013"];
+    NSString *uplodedDate = [df stringFromDate:file.createdAt];
+    [df setDateFormat:@"hh:mm aaa"];
+    NSString *uplodedTime = [df stringFromDate:file.createdAt];
+    
+    
+    
+    NSString *uploadedOnString = [NSString stringWithFormat:@"Uploaded on %@ at %@",uplodedDate,uplodedTime];
+    NSMenuItem *sub = [subMenu insertItemWithTitle:uploadedOnString action:nil keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
+    [sub setTag:index];
+    [sub setTarget:self];
+    [sub setEnabled:NO];
+    [item setSubmenu:subMenu];
+ 
+  
+    NSMenuItem *sub1 = [subMenu insertItemWithTitle:@"Copy link to Clipboard" action:@selector(copyLink:) keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
+    [sub1 setTarget:self];
+    [sub1 setTag:index];
+    
+    NSMenuItem *sub2 = [subMenu insertItemWithTitle:@"View in Browser" action:@selector(openPage:)  keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
+    [sub2 setTarget:self];
+    [sub2 setTag:index];
+    
+    NSError *error = nil;
+    [file.originalFile checkResourceIsReachableAndReturnError:&error];
+    if (!error) {
+      NSMenuItem *sub3 = [subMenu insertItemWithTitle:@"Reveal original file" action:@selector(revealOriginal:) keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
+      [sub3 setTarget:self];
+      [sub3 setTag:index];
+    }
+
+    
+
+    
+    NSMenuItem *sub4 = [subMenu insertItemWithTitle:@"Delete" action:@selector(deleteFile:) keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
+    [sub4 setTarget:self];
+    [sub4 setTag:index];
+    
+    index++;
   }
   
+  
+  [customMenu insertItem:[NSMenuItem separatorItem] atIndex:[customMenu.itemArray count]];
+
+  NSMenuItem *item4= [customMenu insertItemWithTitle:NSLocalizedString(@"Autoupload Screenshots", @"Quit - Menu Item") action:@selector(toggleScreenshots:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
+  [item4 setTarget:self];
+  if ([[BSDataStore sharedInstance] autoUpdateScreenShots]) {
+    [item4 setState:NSOnState];
+  }
+  else {
+    [item4 setState:NSOffState];
+  }
   
   [customMenu insertItem:[NSMenuItem separatorItem] atIndex:[customMenu.itemArray count]];
   
@@ -80,4 +140,45 @@
   [NSApp terminate:self];
 }
 
+-(void)copyLink:(id)sender {
+  NSString *key = [NSString stringWithFormat:@"%ld",[sender tag]];
+  BSUploadedFile *file = [_menuToFileMapping objectForKey:key];
+  
+  [[NSPasteboard generalPasteboard] clearContents];
+  [[NSPasteboard generalPasteboard] setString:[file page]  forType:NSStringPboardType];
+  
+}
+
+-(void)openPage:(id)sender {
+  NSString *key = [NSString stringWithFormat:@"%ld",[sender tag]];
+  BSUploadedFile *file = [_menuToFileMapping objectForKey:key];
+  NSURL *url = [NSURL URLWithString:file.page];
+  
+  [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+-(void)revealOriginal:(id)sender {
+  NSString *key = [NSString stringWithFormat:@"%ld",[sender tag]];
+  BSUploadedFile *file = [_menuToFileMapping objectForKey:key];
+  [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[file.originalFile]];
+}
+
+-(void)deleteFile:(id)sender {
+  NSString *key = [NSString stringWithFormat:@"%ld",[sender tag]];
+  BSUploadedFile *file = [_menuToFileMapping objectForKey:key];
+  [[BSUploadManager sharedInstance] deleteFile:file];
+}
+
+-(void) toggleScreenshots:(NSMenuItem *)sender {
+  if ([sender state] != NSOnState) {
+    [sender setState:NSOnState];
+    [[BSDataStore sharedInstance] setAutoUpdateScreenShots:YES];
+  }
+  else {
+    [sender setState:NSOffState];
+    
+    [[BSDataStore sharedInstance] setAutoUpdateScreenShots:NO];
+  }
+  
+}
 @end

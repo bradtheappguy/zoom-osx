@@ -32,4 +32,8 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:@"UPDATED_FILES" object:nil];
 }
 
+- (void) removeFile:(id)file {
+  [(NSMutableArray *)_recentlyUploadedFiles removeObject:file];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"UPDATED_FILES" object:nil];
+}
 @end

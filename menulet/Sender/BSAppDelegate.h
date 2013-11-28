@@ -8,10 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BSAppDelegate : NSObject <NSApplicationDelegate> {
+@interface BSAppDelegate : NSObject <NSApplicationDelegate, NSMetadataQueryDelegate> {
   NSStatusItem *theItem;
+  NSMetadataQuery *query;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, copy) NSArray *queryResults;
 
 @end

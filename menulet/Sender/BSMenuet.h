@@ -10,6 +10,8 @@
 
 @interface BSMenuet : NSObject {
   NSStatusItem *_statusItem;
+  
+  NSDictionary *_menuToFileMapping;
 }
 
 @end

@@ -16,5 +16,8 @@
 - (NSArray *) recentlyUploadedFiles;
 
 - (void) addUploadedFile:(id)file;
+- (void) removeFile:(id)file;
+
+@property (readwrite) BOOL autoUpdateScreenShots;
 
 @end
