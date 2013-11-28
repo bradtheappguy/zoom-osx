@@ -12,4 +12,5 @@
 
 + (id)sharedInstance;
 
+@property (weak) IBOutlet NSButton *launchAtLoginCheckbox;
 @end

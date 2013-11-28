@@ -12,6 +12,7 @@
 #import "BSDataStore.h"
 #import "BSUploadedFile.h"
 #import "BSCompletedStatusWindow.h"
+#import "BSPrefrencesPanel.h"
 
 @implementation BSMenuet
 
@@ -103,7 +104,7 @@
   
   [customMenu insertItem:[NSMenuItem separatorItem] atIndex:[customMenu.itemArray count]];
 
-  NSMenuItem *item4= [customMenu insertItemWithTitle:NSLocalizedString(@"Autoupload Screenshots", @"Quit - Menu Item") action:@selector(toggleScreenshots:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
+  NSMenuItem *item4= [customMenu insertItemWithTitle:NSLocalizedString(@"Autoupload Screenshots", @"Autoupload Screenshots - Menu Item") action:@selector(toggleScreenshots:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
   [item4 setTarget:self];
   if ([[BSDataStore sharedInstance] autoUpdateScreenShots]) {
     [item4 setState:NSOnState];
@@ -113,6 +114,10 @@
   }
   
   [customMenu insertItem:[NSMenuItem separatorItem] atIndex:[customMenu.itemArray count]];
+  
+  NSMenuItem *item5 = [customMenu insertItemWithTitle:NSLocalizedString(@"Preferences...", @"Preferences... - Menu Item") action:@selector(showPrefs:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
+  [item5 setTarget:self];
+  [_statusItem setMenu:customMenu];
   
   NSMenuItem *item2 = [customMenu insertItemWithTitle:NSLocalizedString(@"Quit", @"Quit - Menu Item") action:@selector(quit:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
   [item2 setTarget:self];
@@ -182,5 +187,10 @@
     [[BSDataStore sharedInstance] setAutoUpdateScreenShots:NO];
   }
   
+}
+
+-(void) showPrefs:(id)sender {
+  [[BSPrefrencesPanel sharedInstance] setIsVisible:YES];
+  NSLog(@"x");
 }
 @end

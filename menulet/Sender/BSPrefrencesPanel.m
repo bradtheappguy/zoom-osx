@@ -7,17 +7,39 @@
 //
 
 #import "BSPrefrencesPanel.h"
-
+#import "BSDataStore.h"
 @implementation BSPrefrencesPanel
+
+static id sharedInstance = nil;
 
 + (id)sharedInstance
 {
   static dispatch_once_t once;
-  static id sharedInstance;
   dispatch_once(&once, ^{
     sharedInstance = [[self alloc] init];
   });
   return sharedInstance;
 }
 
+-(void) awakeFromNib {
+  if (!sharedInstance) {
+    sharedInstance = self;
+  }
+  [self setLevel:kCGPopUpMenuWindowLevel];
+  if ([[BSDataStore sharedInstance] launchOnStartup]) {
+    [self.launchAtLoginCheckbox setState:NSOnState];
+  }
+  else {
+    [self.launchAtLoginCheckbox setState:NSOffState];
+  }
+}
+- (IBAction)launchAtLoginCheckboxWasClicked:(NSButton *)sender {
+  if (NO == [sender state]) {
+    [[BSDataStore sharedInstance] setLaunchOnStartup:NO];
+  }
+  else {
+    
+    [[BSDataStore sharedInstance] setLaunchOnStartup:YES];
+  }
+}
 @end

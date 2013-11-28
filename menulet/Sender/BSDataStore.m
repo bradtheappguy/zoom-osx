@@ -26,6 +26,7 @@
     _recentlyUploadedFiles = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     _autoUpdateScreenShots = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTOUPLOAD_SCREENSHOTS"] boolValue];
+    _launchOnStartup = [[[NSUserDefaults standardUserDefaults] objectForKey:@"LAUNCH_ON_STARTUP"] boolValue];
   }
   return self;
 }
@@ -60,6 +61,11 @@
 -(void) setAutoUpdateScreenShots:(BOOL)autoUpdateScreenShots {
   _autoUpdateScreenShots = autoUpdateScreenShots;
   [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_autoUpdateScreenShots] forKey:@"AUTOUPLOAD_SCREENSHOTS"];
+}
+
+-(void) setLaunchOnStartup:(BOOL)launchOnStartup {
+  _launchOnStartup = launchOnStartup;
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_launchOnStartup] forKey:@"LAUNCH_ON_STARTUP"];
 }
 
 @end

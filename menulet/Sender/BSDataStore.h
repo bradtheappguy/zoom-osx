@@ -20,4 +20,6 @@
 
 @property (nonatomic, readwrite) BOOL autoUpdateScreenShots;
 
+@property (nonatomic, readwrite) BOOL launchOnStartup;
+
 @end

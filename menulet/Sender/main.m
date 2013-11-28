@@ -1,14 +1,13 @@
 //
 //  main.m
-//  Sender
+//  LetsMove
 //
-//  Created by Brad Smith on 11/27/13.
-//  Copyright (c) 2013 Brad Smith Inc. All rights reserved.
+//  Created by Andy Kim on 9/17/09.
+//  Copyright 2009 Potion Factory LLC. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char * argv[])
-{
-  return NSApplicationMain(argc, argv);
+int main(int argc, char *argv[]) {
+    return NSApplicationMain(argc,  (const char **) argv);
 }
