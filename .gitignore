@@ -175,3 +175,5 @@ xcuserdata
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+*/log/*.log
+
