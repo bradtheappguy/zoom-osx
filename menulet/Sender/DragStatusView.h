@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DragStatusView : NSImageView
+@interface DragStatusView : NSView {
+  NSImage *_image;
+}
+
+@property (nonatomic) NSStatusItem *statusItem;
 
 @end

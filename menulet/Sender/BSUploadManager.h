@@ -11,6 +11,7 @@
 @interface BSUploadManager : NSObject
 
 + (id)sharedInstance;
+- (void) uploadFileURL:(NSURL *)fileURL;
 - (void) uploadFile:(NSString *)path;
 
 @end

@@ -15,4 +15,7 @@
 + (id)sharedInstance;
 
 - (void) hide;
+
+-(void) displayCompletionMessageWithFileName:(NSString *)fileName;
 @end
+

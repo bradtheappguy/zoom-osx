@@ -23,11 +23,10 @@
   return sharedInstance;
 }
 
--(void) uploadFile:(NSString *)filePath {
+
+- (void) uploadFileURL:(NSURL *)fileURL {
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   NSDictionary *parameters = @{@"foo": @"bar"};
-  
-  NSURL *fileURL = [NSURL fileURLWithPath:filePath];
   
   NSString *uploadURLString = @"http://warm-rave.herokuapp.com/uploads.json";
   //NSString *uploadURLString = @"http://localhost:4000/uploads.json";
@@ -59,13 +58,19 @@
       [panel.textField setStringValue:filename];
       [panel setIsVisible:YES];
       
-      [panel performSelector:@selector(hide) withObject:nil afterDelay:1.5];
+      [panel performSelector:@selector(hide) withObject:nil afterDelay:2.5];
       
       
     }
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error: %@", error);
   }];
+
+}
+
+-(void) uploadFile:(NSString *)filePath {
+  NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+  [self uploadFileURL:fileURL];
 }
 
 @end

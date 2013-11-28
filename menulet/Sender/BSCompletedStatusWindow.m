@@ -31,4 +31,22 @@ static id sharedInstance;
 -(void) hide {
   [self setIsVisible:NO];
 }
+
+-(void) displayCompletionMessageWithFileName:(NSString *)fileName {
+  NSRect windowFrame = [[self screen] frame];
+  
+  [self setFrame:NSMakeRect((windowFrame.size.width/2)-(self.frame.size.width/2),
+                             (windowFrame.size.height/2)+(self.frame.size.height/2),
+                             self.frame.size.width,
+                             self.frame.size.height) display:YES];
+  
+  
+  
+  
+  [self.textField setStringValue:fileName];
+  [self setIsVisible:YES];
+  
+  [self performSelector:@selector(hide) withObject:nil afterDelay:1.5];
+}
+
 @end

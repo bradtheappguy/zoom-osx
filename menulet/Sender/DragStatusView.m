@@ -9,6 +9,7 @@
 #import "DragStatusView.h"
 #import "BSUploadManager.h"
 
+
 @implementation DragStatusView
 
 - (id)initWithFrame:(NSRect)frame
@@ -16,21 +17,28 @@
   self = [super initWithFrame:frame];
   if (self) {
     [self registerForDraggedTypes:[NSArray arrayWithObjects: NSFilenamesPboardType, nil]];
+    _image = [NSImage imageNamed:@"icon_menulet"];
   }
   return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-  NSImage *image = [NSImage imageNamed:@"icon_menulet"];
-  [image drawInRect:dirtyRect];
+  [_image drawInRect:dirtyRect];
 }
 
 
 //we want to copy the files
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
 {
+  _image = [NSImage imageNamed:@"icon_menulet_blue"];
+  [self setNeedsDisplay:YES];
   return NSDragOperationCopy;
+}
+
+- (void)draggingExited:(id <NSDraggingInfo>)sender {
+  _image = [NSImage imageNamed:@"icon_menulet"];
+  [self setNeedsDisplay:YES];
 }
 
 
@@ -50,6 +58,11 @@
     }
   }
   return YES;
+}
+
+- (void)mouseDown:(NSEvent *)event {
+  [self.statusItem popUpStatusItemMenu:self.statusItem.menu];
+  NSLog(@"");
 }
 
 
