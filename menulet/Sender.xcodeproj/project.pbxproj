@@ -23,6 +23,7 @@
 		A2F7BA5B1846DC7A00C0E91C /* icon_menulet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA5A1846DC7A00C0E91C /* icon_menulet@2x.png */; };
 		A2F7BA5E1846DF7B00C0E91C /* DragStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */; };
 		A2F7BA611846E8D900C0E91C /* BSUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA601846E8D900C0E91C /* BSUploadManager.m */; };
+		A2F7BA641847000D00C0E91C /* BSCompletedStatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA631847000D00C0E91C /* BSCompletedStatusWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragStatusView.m; sourceTree = "<group>"; };
 		A2F7BA5F1846E8D900C0E91C /* BSUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSUploadManager.h; sourceTree = "<group>"; };
 		A2F7BA601846E8D900C0E91C /* BSUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSUploadManager.m; sourceTree = "<group>"; };
+		A2F7BA621847000D00C0E91C /* BSCompletedStatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCompletedStatusWindow.h; sourceTree = "<group>"; };
+		A2F7BA631847000D00C0E91C /* BSCompletedStatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCompletedStatusWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				A2F7BA5D1846DF7B00C0E91C /* DragStatusView.m */,
 				A2F7BA5F1846E8D900C0E91C /* BSUploadManager.h */,
 				A2F7BA601846E8D900C0E91C /* BSUploadManager.m */,
+				A2F7BA621847000D00C0E91C /* BSCompletedStatusWindow.h */,
+				A2F7BA631847000D00C0E91C /* BSCompletedStatusWindow.m */,
 			);
 			path = Sender;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F7BA641847000D00C0E91C /* BSCompletedStatusWindow.m in Sources */,
 				A2F7BA5E1846DF7B00C0E91C /* DragStatusView.m in Sources */,
 				A2F7BA301846D66E00C0E91C /* main.m in Sources */,
 				A2F7BA611846E8D900C0E91C /* BSUploadManager.m in Sources */,
