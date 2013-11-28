@@ -7,6 +7,7 @@
 //
 
 #import "DragStatusView.h"
+#import <AFNetworking/AFNetworking.h>
 
 @implementation DragStatusView
 
