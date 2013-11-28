@@ -9,6 +9,8 @@
 #import "BSMenuet.h"
 #import "DragStatusView.h"
 #import "BSUploadManager.h"
+#import "BSDataStore.h"
+#import "BSUploadedFile.h"
 
 @implementation BSMenuet
 
@@ -19,12 +21,17 @@
   [_statusItem setTitle:@""];
   [_statusItem setEnabled:YES];
   [_statusItem setToolTip:@"IPMenulet"];
-  [_statusItem setImage:[NSImage imageNamed:@"icon_menulet"]];
   [_statusItem setTarget:self];
   DragStatusView* dragView = [[DragStatusView alloc] initWithFrame:NSMakeRect(0, 0, 24, 24)];
   [dragView setStatusItem:_statusItem];
-  //[_statusItem setView:dragView];
+  [_statusItem setView:dragView];
   
+  [self updateMenu];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenu) name:@"UPDATED_FILES" object:nil];
+}
+
+-(void) updateMenu {
   NSMenu *customMenu = [[NSMenu alloc] init];
   [customMenu setAutoenablesItems:NO];
   
@@ -37,15 +44,20 @@
   
   [item3 setTarget:self];
   
+  NSArray *recentlyUploadedIteme = [[BSDataStore sharedInstance] recentlyUploadedFiles];
+  for (BSUploadedFile *file in recentlyUploadedIteme) {
+    NSMenuItem *item = [customMenu insertItemWithTitle:[file page] action:nil keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
+    [item setTarget:self];
+  }
   
-  [customMenu insertItem:[NSMenuItem separatorItem] atIndex:3];
   
-  NSMenuItem *item2 = [customMenu insertItemWithTitle:NSLocalizedString(@"Quit", @"Quit - Menu Item") action:@selector(quit:) keyEquivalent:@"" atIndex:4];
+  [customMenu insertItem:[NSMenuItem separatorItem] atIndex:[customMenu.itemArray count]];
+  
+  NSMenuItem *item2 = [customMenu insertItemWithTitle:NSLocalizedString(@"Quit", @"Quit - Menu Item") action:@selector(quit:) keyEquivalent:@"" atIndex:[customMenu.itemArray count]];
   [item2 setTarget:self];
   [_statusItem setMenu:customMenu];
   
   [item3 setEnabled:NO];
-
 }
 
 

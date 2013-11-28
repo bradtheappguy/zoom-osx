@@ -8,6 +8,8 @@
 
 #import "BSUploadManager.h"
 #import "BSCompletedStatusWindow.h"
+#import "BSUploadedFile.h"
+#import "BSDataStore.h"
 
 #import <AFNetworking/AFNetworking.h>
 
@@ -35,8 +37,17 @@
     [formData appendPartWithFileURL:fileURL name:@"upload[attachment]" error:nil];
   } success:^(AFHTTPRequestOperation *operation, id responseObject) {
     if ([NSJSONSerialization isValidJSONObject:responseObject]) {
+      
+      
+      BSUploadedFile *file = [[BSUploadedFile alloc] initWithJSON:responseObject];
+      [[BSDataStore sharedInstance] addUploadedFile:file];
+      
+      
       NSString *page = responseObject[@"page"];
       NSLog(@"File uploaded to: %@",page);
+      
+      
+      
       
       [[NSPasteboard generalPasteboard] clearContents];
       [[NSPasteboard generalPasteboard] setString:page  forType:NSStringPboardType];
