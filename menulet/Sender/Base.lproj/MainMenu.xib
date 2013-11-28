@@ -45,6 +45,7 @@
             </view>
             <connections>
                 <outlet property="textField" destination="hVS-MK-aZJ" id="9oy-iR-Vnb"/>
+                <outlet property="titleTextField" destination="voR-DU-faZ" id="YZr-ze-QQr"/>
             </connections>
         </window>
     </objects>

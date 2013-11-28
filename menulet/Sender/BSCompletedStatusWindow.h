@@ -10,12 +10,13 @@
 
 @interface BSCompletedStatusWindow : NSPanel
 
+@property (nonatomic) IBOutlet NSTextField *titleTextField;
 @property (nonatomic) IBOutlet NSTextField *textField;
 
 + (id)sharedInstance;
 
 - (void) hide;
 
--(void) displayCompletionMessageWithFileName:(NSString *)fileName;
+-(void) displayMessage:(NSString *)message WithFileName:(NSString *)fileName duration:(CGFloat)duration;
 @end
 

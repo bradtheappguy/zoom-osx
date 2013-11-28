@@ -11,6 +11,7 @@
 #import "BSUploadManager.h"
 #import "BSDataStore.h"
 #import "BSUploadedFile.h"
+#import "BSCompletedStatusWindow.h"
 
 @implementation BSMenuet
 
@@ -147,6 +148,7 @@
   [[NSPasteboard generalPasteboard] clearContents];
   [[NSPasteboard generalPasteboard] setString:[file page]  forType:NSStringPboardType];
   
+  [[BSCompletedStatusWindow sharedInstance] displayMessage:NSLocalizedString(@"Copied", @"") WithFileName:[file page] duration:2.0];
 }
 
 -(void)openPage:(id)sender {

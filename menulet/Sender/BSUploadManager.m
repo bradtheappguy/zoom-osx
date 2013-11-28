@@ -45,35 +45,19 @@
       
       
       NSString *page = responseObject[@"page"];
-      NSLog(@"File uploaded to: %@",page);
-      
-      
-      
-      
+
       [[NSPasteboard generalPasteboard] clearContents];
       [[NSPasteboard generalPasteboard] setString:page  forType:NSStringPboardType];
       [[NSSound soundNamed:@"Ping"] play];
       
       BSCompletedStatusWindow *panel = [BSCompletedStatusWindow sharedInstance];
-      NSRect windowFrame = [[panel screen] frame];
-      
-      [panel setFrame:NSMakeRect((windowFrame.size.width/2)-(panel.frame.size.width/2),
-                                 (windowFrame.size.height/2)+(panel.frame.size.height/2),
-                                 panel.frame.size.width,
-                                 panel.frame.size.height) display:YES];
-      
-      
-
-      
-      [panel.textField setStringValue:[file fileName]];
-      [panel setIsVisible:YES];
-      
-      [panel performSelector:@selector(hide) withObject:nil afterDelay:2.5];
+      [panel displayMessage:NSLocalizedString(@"Uploaded", @"") WithFileName:[file fileName] duration:2.0];
       
       
     }
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error: %@", error);
+    [[BSCompletedStatusWindow sharedInstance] displayMessage:NSLocalizedString(@"Error - Upload Failed", @"") WithFileName:[fileURL path] duration:4.0];
   }];
 
 }
@@ -89,9 +73,10 @@
   [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
   [manager DELETE:file.page parameters:@{@"delete_token": file.deleteToken} success:^(AFHTTPRequestOperation *operation, id responseObject) {
     NSLog(@"Deleted");
+    [[BSCompletedStatusWindow sharedInstance] displayMessage:NSLocalizedString(@"Deleted", @"") WithFileName:[file fileName] duration:2.0];
     [[BSDataStore sharedInstance] removeFile:file];
   } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-    NSLog(@"failed to delete");
+    [[BSCompletedStatusWindow sharedInstance] displayMessage:NSLocalizedString(@"Error - Delete Failed", @"") WithFileName:[file fileName] duration:4.0];
   }];
 }
 @end

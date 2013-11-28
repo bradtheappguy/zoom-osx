@@ -32,7 +32,7 @@ static id sharedInstance;
   [self setIsVisible:NO];
 }
 
--(void) displayCompletionMessageWithFileName:(NSString *)fileName {
+-(void) displayMessage:(NSString *)message WithFileName:(NSString *)fileName duration:(CGFloat)duration {
   NSRect windowFrame = [[self screen] frame];
   
   [self setFrame:NSMakeRect((windowFrame.size.width/2)-(self.frame.size.width/2),
@@ -42,11 +42,11 @@ static id sharedInstance;
   
   
   
-  
+  [self.titleTextField setStringValue:message];
   [self.textField setStringValue:fileName];
   [self setIsVisible:YES];
   
-  [self performSelector:@selector(hide) withObject:nil afterDelay:1.5];
+  [self performSelector:@selector(hide) withObject:nil afterDelay:duration];
 }
 
 @end
