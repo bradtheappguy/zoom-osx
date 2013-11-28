@@ -13,4 +13,9 @@
 + (id)sharedInstance;
 
 @property (weak) IBOutlet NSButton *launchAtLoginCheckbox;
+@property (weak) IBOutlet NSPopUpButton *soundButton;
+
+@property (weak) IBOutlet NSMenu *soundMenu;
+
+-(IBAction)performSoundMenuClicl:(id)sender;
 @end

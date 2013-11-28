@@ -31,6 +31,8 @@
     
     _autoUpdateScreenShots = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTOUPLOAD_SCREENSHOTS"] boolValue];
     _launchOnStartup = [loginController startAtLogin];
+    
+    _uploadSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"SOUND"];
   }
   return self;
 }
@@ -70,6 +72,44 @@
 -(void) setLaunchOnStartup:(BOOL)launchOnStartup {
   _launchOnStartup = launchOnStartup;
   loginController.startAtLogin = _launchOnStartup;
+}
+
+-(NSArray *) availableSounds {
+  NSMutableArray *arr = [[NSMutableArray alloc] init];
+  
+  NSFileManager *fileManager = [[NSFileManager alloc] init];
+  NSURL *directoryURL = [NSURL fileURLWithPath:@"/System/Library/Sounds"];
+  NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
+  
+  NSDirectoryEnumerator *enumerator = [fileManager
+                                       enumeratorAtURL:directoryURL
+                                       includingPropertiesForKeys:keys
+                                       options:0
+                                       errorHandler:^(NSURL *url, NSError *error) {
+                                         // Handle the error.
+                                         // Return YES if the enumeration should continue after the error.
+                                         return YES;
+                                       }];
+  
+  for (NSURL *url in enumerator) {
+    NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
+    NSArray *parts = [[components path] componentsSeparatedByString:@"/"];
+    NSString *filename = [parts lastObject];
+    filename = [filename stringByDeletingPathExtension];
+    [arr addObject:filename];
+  }
+  
+ 
+  return arr;
+}
+
+-(void) setUploadSound:(NSString *)sound {
+  _uploadSound = sound;
+  [[NSUserDefaults standardUserDefaults] setObject:_uploadSound forKey:@"SOUND"];
+}
+
+-(NSString *)defaultUploadSound {
+  return @"Ping";
 }
 
 @end

@@ -30,6 +30,18 @@ static id sharedInstance = nil;
   }
   
   [self setReleasedWhenClosed:NO];
+  
+  [self.soundButton setAutoenablesItems:NO];
+  
+  NSArray *sounds = [[BSDataStore sharedInstance] availableSounds];
+  [self.soundButton addItemsWithTitles:sounds];
+  NSString *sound = [[BSDataStore sharedInstance] uploadSound];
+  if (sound) {
+    [self.soundButton setTitle:sound];
+  }
+  else {
+    [self.soundButton setTitle:[[BSDataStore sharedInstance] defaultUploadSound]];
+  }
 }
 - (IBAction)launchAtLoginCheckboxWasClicked:(NSButton *)sender {
   if (NO == [sender state]) {
@@ -39,5 +51,12 @@ static id sharedInstance = nil;
     
     [[BSDataStore sharedInstance] setLaunchOnStartup:YES];
   }
+}
+
+-(IBAction)performSoundMenuClicl:(id)sender {
+  NSString *sound = [sender titleOfSelectedItem];
+  [sender setTitle:sound];
+  [sender synchronizeTitleAndSelectedItem];
+  [[BSDataStore sharedInstance] setUploadSound:sound];
 }
 @end

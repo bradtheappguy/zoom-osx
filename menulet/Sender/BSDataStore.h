@@ -19,9 +19,14 @@
 
 - (void) addUploadedFile:(id)file;
 - (void) removeFile:(id)file;
+-(NSArray *) availableSounds;
+
+-(NSString *)defaultUploadSound;
 
 @property (nonatomic, readwrite) BOOL autoUpdateScreenShots;
 
 @property (nonatomic, readwrite) BOOL launchOnStartup;
+
+@property (nonatomic, readwrite) NSString *uploadSound;
 
 @end

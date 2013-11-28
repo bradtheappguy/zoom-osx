@@ -48,7 +48,7 @@
 
       [[NSPasteboard generalPasteboard] clearContents];
       [[NSPasteboard generalPasteboard] setString:page  forType:NSStringPboardType];
-      [[NSSound soundNamed:@"Ping"] play];
+      [[NSSound soundNamed:[[BSDataStore sharedInstance] uploadSound]] play];
       
       BSCompletedStatusWindow *panel = [BSCompletedStatusWindow sharedInstance];
       [panel displayMessage:NSLocalizedString(@"Uploaded", @"") WithFileName:[file fileName] duration:2.0];
