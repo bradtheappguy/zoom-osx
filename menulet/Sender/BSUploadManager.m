@@ -21,21 +21,19 @@
   return sharedInstance;
 }
 
--(void) uploadFile:(NSString *)path {
-  NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-  AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+-(void) uploadFile:(NSString *)filePath {
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  NSDictionary *parameters = @{@"foo": @"bar"};
   
-  NSURL *URL = [NSURL URLWithString:@"http://example.com/upload"];
-  NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+  NSURL *fileURL = [NSURL fileURLWithPath:filePath];
   
-  NSURL *filePath = [NSURL fileURLWithPath:path];
-  NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:filePath progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-    if (error) {
-      NSLog(@"Error: %@", error);
-    } else {
-      NSLog(@"Success: %@ %@", response, responseObject);
-    }
+  [manager POST:@"http://localhost:4000/uploads.json" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [formData appendPartWithFileURL:fileURL name:@"upload[attachment]" error:nil];
+  } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"Success: %@", responseObject);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"Error: %@", error);
   }];
-  [uploadTask resume];
 }
+
 @end
