@@ -190,7 +190,14 @@
 }
 
 -(void) showPrefs:(id)sender {
-  [[BSPrefrencesPanel sharedInstance] setIsVisible:YES];
+  BSPrefrencesPanel *panel = [BSPrefrencesPanel sharedInstance];
+
+  [NSApp activateIgnoringOtherApps:YES];
+  [panel center];
+  [panel makeKeyAndOrderFront:self];
+  [panel setIsVisible:YES];
+  [panel update];
+  
   NSLog(@"x");
 }
 @end

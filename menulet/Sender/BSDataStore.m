@@ -8,6 +8,7 @@
 
 #import "BSDataStore.h"
 
+
 @implementation BSDataStore
 
 + (id)sharedInstance
@@ -22,11 +23,14 @@
 
 -(id) init {
   if (self = [super init]) {
+    loginController  = [[StartAtLoginController alloc] initWithIdentifier:@"com.bradsmithinc.sender.helper"];
+
+    
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"RECENTLY_UPLOADED_FILES"];
     _recentlyUploadedFiles = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     _autoUpdateScreenShots = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTOUPLOAD_SCREENSHOTS"] boolValue];
-    _launchOnStartup = [[[NSUserDefaults standardUserDefaults] objectForKey:@"LAUNCH_ON_STARTUP"] boolValue];
+    _launchOnStartup = [loginController startAtLogin];
   }
   return self;
 }
@@ -65,7 +69,7 @@
 
 -(void) setLaunchOnStartup:(BOOL)launchOnStartup {
   _launchOnStartup = launchOnStartup;
-  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_launchOnStartup] forKey:@"LAUNCH_ON_STARTUP"];
+  loginController.startAtLogin = _launchOnStartup;
 }
 
 @end

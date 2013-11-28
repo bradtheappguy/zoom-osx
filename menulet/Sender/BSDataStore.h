@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StartAtLoginController.h"
 
 @interface BSDataStore : NSObject {
   NSArray *_recentlyUploadedFiles;
+  StartAtLoginController *loginController;
 }
 
 + (id)sharedInstance;

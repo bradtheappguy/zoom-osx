@@ -14,10 +14,6 @@ static id sharedInstance = nil;
 
 + (id)sharedInstance
 {
-  static dispatch_once_t once;
-  dispatch_once(&once, ^{
-    sharedInstance = [[self alloc] init];
-  });
   return sharedInstance;
 }
 
@@ -25,13 +21,15 @@ static id sharedInstance = nil;
   if (!sharedInstance) {
     sharedInstance = self;
   }
-  [self setLevel:kCGPopUpMenuWindowLevel];
+  //[self setLevel:kCGPopUpMenuWindowLevel];
   if ([[BSDataStore sharedInstance] launchOnStartup]) {
     [self.launchAtLoginCheckbox setState:NSOnState];
   }
   else {
     [self.launchAtLoginCheckbox setState:NSOffState];
   }
+  
+  [self setReleasedWhenClosed:NO];
 }
 - (IBAction)launchAtLoginCheckboxWasClicked:(NSButton *)sender {
   if (NO == [sender state]) {
