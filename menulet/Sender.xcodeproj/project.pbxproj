@@ -14,7 +14,6 @@
 		A2F7BA341846D66E00C0E91C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA321846D66E00C0E91C /* Credits.rtf */; };
 		A2F7BA371846D66E00C0E91C /* BSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7BA361846D66E00C0E91C /* BSAppDelegate.m */; };
 		A2F7BA3A1846D66E00C0E91C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA381846D66E00C0E91C /* MainMenu.xib */; };
-		A2F7BA3C1846D66E00C0E91C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA3B1846D66E00C0E91C /* Images.xcassets */; };
 		A2F7BA431846D66F00C0E91C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F7BA421846D66F00C0E91C /* XCTest.framework */; };
 		A2F7BA441846D66F00C0E91C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F7BA231846D66E00C0E91C /* Cocoa.framework */; };
 		A2F7BA4C1846D66F00C0E91C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2F7BA4A1846D66F00C0E91C /* InfoPlist.strings */; };
@@ -55,7 +54,6 @@
 		A2F7BA351846D66E00C0E91C /* BSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSAppDelegate.h; sourceTree = "<group>"; };
 		A2F7BA361846D66E00C0E91C /* BSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSAppDelegate.m; sourceTree = "<group>"; };
 		A2F7BA391846D66E00C0E91C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		A2F7BA3B1846D66E00C0E91C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A2F7BA411846D66F00C0E91C /* SenderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SenderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7BA421846D66F00C0E91C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A2F7BA491846D66F00C0E91C /* SenderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SenderTests-Info.plist"; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				A2F7BA351846D66E00C0E91C /* BSAppDelegate.h */,
 				A2F7BA361846D66E00C0E91C /* BSAppDelegate.m */,
 				A2F7BA381846D66E00C0E91C /* MainMenu.xib */,
-				A2F7BA3B1846D66E00C0E91C /* Images.xcassets */,
 				A2F7BA2A1846D66E00C0E91C /* Supporting Files */,
 				A2F7BA571846D6AA00C0E91C /* BSMenuet.h */,
 				A2F7BA581846D6AA00C0E91C /* BSMenuet.m */,
@@ -276,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2F7BA2E1846D66E00C0E91C /* InfoPlist.strings in Resources */,
-				A2F7BA3C1846D66E00C0E91C /* Images.xcassets in Resources */,
 				A2F7BA341846D66E00C0E91C /* Credits.rtf in Resources */,
 				A2F7BA5B1846DC7A00C0E91C /* icon_menulet@2x.png in Resources */,
 				A2F7BA661847150D00C0E91C /* icon_menulet_blue@2x.png in Resources */,

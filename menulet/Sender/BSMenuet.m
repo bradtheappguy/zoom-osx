@@ -17,15 +17,15 @@
 
 - (void)awakeFromNib
 {
-  _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+  _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
   [_statusItem setHighlightMode:NO];
   [_statusItem setTitle:@""];
   [_statusItem setEnabled:YES];
   [_statusItem setToolTip:@"IPMenulet"];
   [_statusItem setTarget:self];
-  DragStatusView* dragView = [[DragStatusView alloc] initWithFrame:NSMakeRect(0, 0, 24, 24)];
+  DragStatusView* dragView = [[DragStatusView alloc] initWithFrame:NSMakeRect(0, 0, 30, 22)];
   [dragView setStatusItem:_statusItem];
-  [_statusItem setView:dragView];
+  [_statusItem setView:dragView]; 
   
   [self updateMenu];
 

@@ -27,6 +27,26 @@
   return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder {
+  [coder encodeObject:self.page forKey:@"kBSUploadedFilePage"];
+  [coder encodeObject:self.createdAt forKey:@"kBSUploadedFileCreatedAt"];
+  [coder encodeObject:self.originalFile forKey:@"kBSUploadedFileOriginalFile"];
+  [coder encodeObject:self.deleteToken forKey:@"kBSUploadedFileDeleteToken"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+  self = [super init];
+  if (self) {
+    _page = [coder decodeObjectForKey:@"kBSUploadedFilePage"];
+    _createdAt = [coder decodeObjectForKey:@"kBSUploadedFileCreatedAt"];
+    _originalFile = [coder decodeObjectForKey:@"kBSUploadedFileOriginalFile"];
+    _deleteToken = [coder decodeObjectForKey:@"kBSUploadedFileDeleteToken"];
+  }
+  return self;
+}
+
+
+
 -(NSString *) fileName {
   NSURLComponents *components = [NSURLComponents componentsWithURL:_originalFile resolvingAgainstBaseURL:NO];
   NSArray *parts = [[components path] componentsSeparatedByString:@"/"];

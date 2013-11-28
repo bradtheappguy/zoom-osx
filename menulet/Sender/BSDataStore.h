@@ -18,6 +18,6 @@
 - (void) addUploadedFile:(id)file;
 - (void) removeFile:(id)file;
 
-@property (readwrite) BOOL autoUpdateScreenShots;
+@property (nonatomic, readwrite) BOOL autoUpdateScreenShots;
 
 @end

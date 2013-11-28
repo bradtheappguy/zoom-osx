@@ -20,6 +20,16 @@
   return sharedInstance;
 }
 
+-(id) init {
+  if (self = [super init]) {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"RECENTLY_UPLOADED_FILES"];
+    _recentlyUploadedFiles = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    _autoUpdateScreenShots = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTOUPLOAD_SCREENSHOTS"] boolValue];
+  }
+  return self;
+}
+
 - (NSArray *) recentlyUploadedFiles {
   return _recentlyUploadedFiles;
 }
@@ -28,12 +38,28 @@
   if (!_recentlyUploadedFiles) {
     _recentlyUploadedFiles = [[NSMutableArray alloc] init];
   }
-  [(NSMutableArray *)_recentlyUploadedFiles addObject:file];
+  [(NSMutableArray *)_recentlyUploadedFiles insertObject:file atIndex:0];
+  while ([_recentlyUploadedFiles count] > 10) {
+    id toRemove = [_recentlyUploadedFiles lastObject];
+    [(NSMutableArray *)_recentlyUploadedFiles removeObject:toRemove];
+  }
+  
+  
   [[NSNotificationCenter defaultCenter] postNotificationName:@"UPDATED_FILES" object:nil];
+  
+  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_recentlyUploadedFiles];
+  
+  [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"RECENTLY_UPLOADED_FILES"];
 }
 
 - (void) removeFile:(id)file {
   [(NSMutableArray *)_recentlyUploadedFiles removeObject:file];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"UPDATED_FILES" object:nil];
 }
+
+-(void) setAutoUpdateScreenShots:(BOOL)autoUpdateScreenShots {
+  _autoUpdateScreenShots = autoUpdateScreenShots;
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_autoUpdateScreenShots] forKey:@"AUTOUPLOAD_SCREENSHOTS"];
+}
+
 @end
