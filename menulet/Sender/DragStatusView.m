@@ -17,7 +17,9 @@
   self = [super initWithFrame:frame];
   if (self) {
     [self registerForDraggedTypes:[NSArray arrayWithObjects: NSFilenamesPboardType, nil]];
-    _image = [NSImage imageNamed:@"icon_menulet"];
+    _image = [NSImage imageNamed:@"plane"];
+    
+    [[BSUploadManager sharedInstance] addObserver:self forKeyPath:@"percentUploaded" options:0 context:0];
   }
   return self;
 }
@@ -31,13 +33,13 @@
 //we want to copy the files
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender
 {
-  _image = [NSImage imageNamed:@"icon_menulet_blue"];
+  _image = [NSImage imageNamed:@"plane-rollover"];
   [self setNeedsDisplay:YES];
   return NSDragOperationCopy;
 }
 
 - (void)draggingExited:(id <NSDraggingInfo>)sender {
-  _image = [NSImage imageNamed:@"icon_menulet"];
+  _image = [NSImage imageNamed:@"plane"];
   [self setNeedsDisplay:YES];
 }
 
@@ -66,5 +68,28 @@
   NSLog(@"down2");
 }
 
-
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"percentUploaded"]) {
+    CGFloat percent = [[BSUploadManager sharedInstance] percentUploaded];
+    int index = percent*100 / 5;
+    NSString *imageName = [NSString stringWithFormat:@"plane-uploading%d",index];
+    NSLog(@"XXX: %f %d %@",percent,index, imageName);
+    _image = [NSImage imageNamed:imageName];
+    [self setNeedsDisplay:YES];
+    
+    if (percent >= 1.0) {
+      _image = [NSImage imageNamed:@"plane-done"];
+      [self setNeedsDisplay:YES];
+      double delayInSeconds = 2.0;
+      dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+      dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        if ([[BSUploadManager sharedInstance] percentUploaded] >= 1.0) {
+          _image = [NSImage imageNamed:@"plane"];
+          [self setNeedsDisplay:YES];
+        }
+        
+      });
+    }
+  }
+}
 @end

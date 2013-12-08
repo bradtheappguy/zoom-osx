@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <HockeySDK/HockeySDK.h>
 
-@interface BSAppDelegate : NSObject <NSApplicationDelegate, NSMetadataQueryDelegate> {
+@protocol BITHockeyManagerDelegate;
+
+@interface BSAppDelegate : NSObject <NSApplicationDelegate, NSMetadataQueryDelegate, BITHockeyManagerDelegate> {
   NSStatusItem *theItem;
   NSMetadataQuery *query;
 }

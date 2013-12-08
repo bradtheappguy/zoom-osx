@@ -27,8 +27,8 @@
 
 - (void) uploadFileURL:(NSURL *)fileURL {
   
-  NSString *uploadURLString = @"http://warm-rave.herokuapp.com/uploads.json";
-  //NSString *uploadURLString = @"http://localhost:4000/uploads.json";
+  NSString *uploadURLString = @"http://getzoomapp.herokuapp.com/uploads.json";
+  //NSString *uploadURLString = @"http://localhost:3000/uploads.json";
   
   NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:uploadURLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [formData appendPartWithFileURL:fileURL name:@"upload[attachment]" error:nil];
@@ -38,6 +38,7 @@
   AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
   [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
     CGFloat progress = ((CGFloat)totalBytesWritten) / totalBytesExpectedToWrite;
+    self.percentUploaded = progress;
     NSLog(@"progress: %f",progress);
   }];
   
@@ -53,11 +54,8 @@
         
         [[BSDataStore sharedInstance] addUploadedFile:file];
         
-        
-        NSString *page = object[@"page"];
-        
         [[NSPasteboard generalPasteboard] clearContents];
-        [[NSPasteboard generalPasteboard] setString:page  forType:NSStringPboardType];
+        [[NSPasteboard generalPasteboard] setString:file.page  forType:NSStringPboardType];
         
         NSString *soundName = [[BSDataStore sharedInstance] uploadSound];
         if (soundName) {
@@ -66,7 +64,7 @@
         }
         
         BSCompletedStatusWindow *panel = [BSCompletedStatusWindow sharedInstance];
-        [panel displayMessage:NSLocalizedString(@"Uploaded", @"") WithFileName:[file fileName] duration:2.0];
+        [panel displayMessage:NSLocalizedString(@"Uploaded", @"") WithFileName:[file fileName] duration:4.0];
       }
       else {
         NSLog(@"Network Error: Data is not a valid json opbject");

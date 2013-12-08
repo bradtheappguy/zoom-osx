@@ -20,7 +20,7 @@ static id sharedInstance;
 
 -(void) awakeFromNib {
   sharedInstance = self;
-  self.backgroundColor = [NSColor redColor];
+  self.backgroundColor = [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0.25];
   [self setLevel:kCGPopUpMenuWindowLevel];
 }
 

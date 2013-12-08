@@ -15,4 +15,7 @@
 - (void) uploadFileURL:(NSURL *)fileURL;
 - (void) uploadFile:(NSString *)path;
 - (void) deleteFile:(BSUploadedFile *)file;
+
+@property CGFloat percentUploaded;
+
 @end
