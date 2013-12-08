@@ -20,7 +20,7 @@ static id sharedInstance;
 
 -(void) awakeFromNib {
   sharedInstance = self;
-  NSLog(@"awake");
+  self.backgroundColor = [NSColor redColor];
   [self setLevel:kCGPopUpMenuWindowLevel];
 }
 
@@ -48,5 +48,8 @@ static id sharedInstance;
   
   [self performSelector:@selector(hide) withObject:nil afterDelay:duration];
 }
+
+
+
 
 @end

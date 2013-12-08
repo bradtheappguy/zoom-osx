@@ -34,8 +34,14 @@
 }
 
 -(void) updateMenu {
-  NSMenu *customMenu = [[NSMenu alloc] init];
+  NSLog(@"update");
+  NSMenu *customMenu = [_statusItem menu];
+  if (!customMenu) {
+    customMenu = [[NSMenu alloc] init];
+  }
   [customMenu setAutoenablesItems:NO];
+  
+  [customMenu removeAllItems];
   
   NSMenuItem *item1 = [customMenu insertItemWithTitle:NSLocalizedString(@"Upload File...", @"Select File - Menu Item") action:@selector(selectFile:) keyEquivalent:@"" atIndex:0];
   [item1 setTarget:self];
@@ -67,13 +73,14 @@
     
     
     
-    NSString *uploadedOnString = [NSString stringWithFormat:@"Uploaded on %@ at %@",uplodedDate,uplodedTime];
+    NSString *uploadedOnString = [NSString stringWithFormat:@"Uploaded %@ at %@",uplodedDate,uplodedTime];
     NSMenuItem *sub = [subMenu insertItemWithTitle:uploadedOnString action:nil keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
     [sub setTag:index];
     [sub setTarget:self];
     [sub setEnabled:NO];
     [item setSubmenu:subMenu];
  
+    [subMenu insertItem:[NSMenuItem separatorItem] atIndex:[subMenu.itemArray count]];
   
     NSMenuItem *sub1 = [subMenu insertItemWithTitle:@"Copy link to Clipboard" action:@selector(copyLink:) keyEquivalent:@"" atIndex:[subMenu.itemArray count]];
     [sub1 setTarget:self];

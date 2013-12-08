@@ -27,7 +27,10 @@
 
     
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"RECENTLY_UPLOADED_FILES"];
-    _recentlyUploadedFiles = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (data) {
+       _recentlyUploadedFiles = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+   
     
     _autoUpdateScreenShots = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AUTOUPLOAD_SCREENSHOTS"] boolValue];
     _launchOnStartup = [loginController startAtLogin];
@@ -45,7 +48,10 @@
   if (!_recentlyUploadedFiles) {
     _recentlyUploadedFiles = [[NSMutableArray alloc] init];
   }
-  [(NSMutableArray *)_recentlyUploadedFiles insertObject:file atIndex:0];
+  if (file) {
+    [(NSMutableArray *)_recentlyUploadedFiles insertObject:file atIndex:0];
+  }
+  
   while ([_recentlyUploadedFiles count] > 10) {
     id toRemove = [_recentlyUploadedFiles lastObject];
     [(NSMutableArray *)_recentlyUploadedFiles removeObject:toRemove];
@@ -92,11 +98,10 @@
                                        }];
   
   for (NSURL *url in enumerator) {
-    NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
-    NSArray *parts = [[components path] componentsSeparatedByString:@"/"];
-    NSString *filename = [parts lastObject];
-    filename = [filename stringByDeletingPathExtension];
-    [arr addObject:filename];
+    NSString *filename = [[[url absoluteString] lastPathComponent] stringByDeletingPathExtension];
+    if (filename) {
+      [arr addObject:filename];
+    }
   }
   
  
@@ -105,6 +110,7 @@
 
 -(void) setUploadSound:(NSString *)sound {
   _uploadSound = sound;
+  [[NSSound soundNamed:sound] play];
   [[NSUserDefaults standardUserDefaults] setObject:_uploadSound forKey:@"SOUND"];
 }
 

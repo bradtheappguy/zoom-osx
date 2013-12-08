@@ -48,10 +48,7 @@
 
 
 -(NSString *) fileName {
-  NSURLComponents *components = [NSURLComponents componentsWithURL:_originalFile resolvingAgainstBaseURL:NO];
-  NSArray *parts = [[components path] componentsSeparatedByString:@"/"];
-  NSString *filename = [parts lastObject];
-  return filename;
+  return [[_originalFile path] lastPathComponent];
 }
 
 @end

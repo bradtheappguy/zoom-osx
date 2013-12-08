@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BSCompletedStatusWindow : NSPanel
+@interface BSCompletedStatusWindow : NSWindow
 
 @property (nonatomic) IBOutlet NSTextField *titleTextField;
 @property (nonatomic) IBOutlet NSTextField *textField;

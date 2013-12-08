@@ -10,11 +10,62 @@
 #import "BSUploadManager.h"
 #import "BSDataStore.h"
 #import "PFMoveApplication.h"
+#import <CrashReporter/CrashReporter.h>
 
 @implementation BSAppDelegate
 
+
+
+//
+// Called to handle a pending crash report.
+//
+- (void) handleCrashReport {
+  PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
+  NSData *crashData;
+  NSError *error;
+  
+  // Try loading the crash report
+  crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
+  if (crashData == nil) {
+    NSLog(@"Could not load crash report: %@", error);
+    [crashReporter purgePendingCrashReport];
+  }
+  
+  // We could send the report from here, but we'll just print out
+  // some debugging info instead
+  PLCrashReport *report = [[PLCrashReport alloc] initWithData: crashData error: &error];
+  if (report == nil) {
+    NSLog(@"Could not parse crash report");
+    [crashReporter purgePendingCrashReport];
+  }
+  
+  NSLog(@"Crashed on %@", report.systemInfo.timestamp);
+  NSLog(@"Crashed with signal %@ (code %@, address=0x%" PRIx64 ")", report.signalInfo.name,
+        report.signalInfo.code, report.signalInfo.address);
+  
+
+  [crashReporter purgePendingCrashReport];
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+  
+  [NSApp setServicesProvider:self];
+  
+  PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
+  //NSError *error;
+  
+  // Check if we previously crashed
+  if ([crashReporter hasPendingCrashReport]) {
+    [self handleCrashReport];
+  }
+  
+  // Enable the Crash Reporter
+ // if (![crashReporter enableCrashReporterAndReturnError: &error])
+   // NSLog(@"Warning: Could not enable crash reporter: %@", error);
+  
+  
   PFMoveToApplicationsFolderIfNecessary();
   query = [[NSMetadataQuery alloc] init];
   
@@ -46,5 +97,16 @@
   }
 }
 
+
+- (void)uploadFromService:(NSPasteboard *)pboard
+             userData:(NSString *)userData
+                    error:(NSString **)error {
+  if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
+    NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
+    for (NSString *fileName in files) {
+      [[BSUploadManager sharedInstance] uploadFile:fileName];
+    }
+  }
+}
 
 @end

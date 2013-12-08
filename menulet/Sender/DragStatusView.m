@@ -24,7 +24,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-  [_image drawInRect:dirtyRect];
+  [_image drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
 }
 
 
@@ -61,8 +61,9 @@
 }
 
 - (void)mouseDown:(NSEvent *)event {
+  NSLog(@"down");
   [self.statusItem popUpStatusItemMenu:self.statusItem.menu];
-  NSLog(@"");
+  NSLog(@"down2");
 }
 
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4135086AD9744D53BC89AEB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A3CA187C34473394E5BBEF /* libPods.a */; };
 		A248879C1847728500604213 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A248879B1847728500604213 /* Images.xcassets */; };
+		A28504DB1850311100D82FF9 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28504DA1850311100D82FF9 /* CrashReporter.framework */; };
+		A28504DD185031C600D82FF9 /* CrashReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A28504DA1850311100D82FF9 /* CrashReporter.framework */; };
 		A2F43E9318477ABF007E71B0 /* BSPrefrencesPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F43E9218477ABF007E71B0 /* BSPrefrencesPanel.m */; };
 		A2F43E95184784EF007E71B0 /* NSApplicationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F43E94184784EF007E71B0 /* NSApplicationIcon@2x.png */; };
 		A2F43E9B1847C2B7007E71B0 /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F43E981847C2B7007E71B0 /* NSString+SymlinksAndAliases.m */; };
@@ -20,7 +22,7 @@
 		A2F43EB11847C3C6007E71B0 /* BSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F43EB01847C3C6007E71B0 /* BSAppDelegate.m */; };
 		A2F43EB41847C3C6007E71B0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F43EB21847C3C6007E71B0 /* MainMenu.xib */; };
 		A2F43EB61847C3C6007E71B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F43EB51847C3C6007E71B0 /* Images.xcassets */; };
-		A2F43ED01847C4B5007E71B0 /* SenderHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2F43EA11847C3C6007E71B0 /* SenderHelper.app */; };
+		A2F43ED01847C4B5007E71B0 /* ZoomHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2F43EA11847C3C6007E71B0 /* ZoomHelper.app */; };
 		A2F43ED21847C511007E71B0 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F43ED11847C511007E71B0 /* ServiceManagement.framework */; };
 		A2F43ED51847C550007E71B0 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F43ED41847C550007E71B0 /* StartAtLoginController.m */; };
 		A2F7BA241846D66E00C0E91C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F7BA231846D66E00C0E91C /* Cocoa.framework */; };
@@ -40,13 +42,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A28504DC185031BD00D82FF9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A28504DD185031C600D82FF9 /* CrashReporter.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A2F43ECF1847C48D007E71B0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				A2F43ED01847C4B5007E71B0 /* SenderHelper.app in CopyFiles */,
+				A2F43ED01847C4B5007E71B0 /* ZoomHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +68,7 @@
 		00A3CA187C34473394E5BBEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E9549E6D72D4BF3BCD35EA7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A248879B1847728500604213 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A28504DA1850311100D82FF9 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		A2F43E9118477ABF007E71B0 /* BSPrefrencesPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPrefrencesPanel.h; sourceTree = "<group>"; };
 		A2F43E9218477ABF007E71B0 /* BSPrefrencesPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPrefrencesPanel.m; sourceTree = "<group>"; };
 		A2F43E94184784EF007E71B0 /* NSApplicationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NSApplicationIcon@2x.png"; sourceTree = "<group>"; };
@@ -64,11 +77,11 @@
 		A2F43E981847C2B7007E71B0 /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
 		A2F43E991847C2B7007E71B0 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		A2F43E9A1847C2B7007E71B0 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
-		A2F43EA11847C3C6007E71B0 /* SenderHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SenderHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2F43EA51847C3C6007E71B0 /* SenderHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SenderHelper-Info.plist"; sourceTree = "<group>"; };
+		A2F43EA11847C3C6007E71B0 /* ZoomHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZoomHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F43EA51847C3C6007E71B0 /* ZoomHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZoomHelper-Info.plist"; sourceTree = "<group>"; };
 		A2F43EA71847C3C6007E71B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A2F43EA91847C3C6007E71B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A2F43EAB1847C3C6007E71B0 /* SenderHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SenderHelper-Prefix.pch"; sourceTree = "<group>"; };
+		A2F43EAB1847C3C6007E71B0 /* ZoomHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZoomHelper-Prefix.pch"; sourceTree = "<group>"; };
 		A2F43EAD1847C3C6007E71B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A2F43EAF1847C3C6007E71B0 /* BSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSAppDelegate.h; sourceTree = "<group>"; };
 		A2F43EB01847C3C6007E71B0 /* BSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSAppDelegate.m; sourceTree = "<group>"; };
@@ -81,15 +94,15 @@
 		A2F43ED11847C511007E71B0 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		A2F43ED31847C550007E71B0 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartAtLoginController.h; sourceTree = "<group>"; };
 		A2F43ED41847C550007E71B0 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartAtLoginController.m; sourceTree = "<group>"; };
-		A2F7BA201846D66E00C0E91C /* Sender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F7BA201846D66E00C0E91C /* Zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7BA231846D66E00C0E91C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A2F7BA261846D66E00C0E91C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A2F7BA271846D66E00C0E91C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A2F7BA281846D66E00C0E91C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A2F7BA2B1846D66E00C0E91C /* Sender-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sender-Info.plist"; sourceTree = "<group>"; };
+		A2F7BA2B1846D66E00C0E91C /* Zoom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zoom-Info.plist"; sourceTree = "<group>"; };
 		A2F7BA2D1846D66E00C0E91C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A2F7BA2F1846D66E00C0E91C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A2F7BA311846D66E00C0E91C /* Sender-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sender-Prefix.pch"; sourceTree = "<group>"; };
+		A2F7BA311846D66E00C0E91C /* Zoom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zoom-Prefix.pch"; sourceTree = "<group>"; };
 		A2F7BA331846D66E00C0E91C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A2F7BA351846D66E00C0E91C /* BSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSAppDelegate.h; sourceTree = "<group>"; };
 		A2F7BA361846D66E00C0E91C /* BSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSAppDelegate.m; sourceTree = "<group>"; };
@@ -130,6 +143,7 @@
 				A2F43ED21847C511007E71B0 /* ServiceManagement.framework in Frameworks */,
 				A2F7BA241846D66E00C0E91C /* Cocoa.framework in Frameworks */,
 				4135086AD9744D53BC89AEB0 /* libPods.a in Frameworks */,
+				A28504DB1850311100D82FF9 /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +166,10 @@
 		A2F43EA41847C3C6007E71B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A2F43EA51847C3C6007E71B0 /* SenderHelper-Info.plist */,
+				A2F43EA51847C3C6007E71B0 /* ZoomHelper-Info.plist */,
 				A2F43EA61847C3C6007E71B0 /* InfoPlist.strings */,
 				A2F43EA91847C3C6007E71B0 /* main.m */,
-				A2F43EAB1847C3C6007E71B0 /* SenderHelper-Prefix.pch */,
+				A2F43EAB1847C3C6007E71B0 /* ZoomHelper-Prefix.pch */,
 				A2F43EAC1847C3C6007E71B0 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -182,6 +196,7 @@
 		A2F7BA171846D66E00C0E91C = {
 			isa = PBXGroup;
 			children = (
+				A28504DA1850311100D82FF9 /* CrashReporter.framework */,
 				A2F7BA291846D66E00C0E91C /* Sender */,
 				A2F7BA471846D66F00C0E91C /* SenderTests */,
 				A2F43EA31847C3C6007E71B0 /* SenderHelper */,
@@ -195,8 +210,8 @@
 		A2F7BA211846D66E00C0E91C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2F7BA201846D66E00C0E91C /* Sender.app */,
-				A2F43EA11847C3C6007E71B0 /* SenderHelper.app */,
+				A2F7BA201846D66E00C0E91C /* Zoom.app */,
+				A2F43EA11847C3C6007E71B0 /* ZoomHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,10 +277,10 @@
 				A2F43E94184784EF007E71B0 /* NSApplicationIcon@2x.png */,
 				A2F7BA651847150D00C0E91C /* icon_menulet_blue@2x.png */,
 				A2F7BA5A1846DC7A00C0E91C /* icon_menulet@2x.png */,
-				A2F7BA2B1846D66E00C0E91C /* Sender-Info.plist */,
+				A2F7BA2B1846D66E00C0E91C /* Zoom-Info.plist */,
 				A2F7BA2C1846D66E00C0E91C /* InfoPlist.strings */,
 				A2F7BA2F1846D66E00C0E91C /* main.m */,
-				A2F7BA311846D66E00C0E91C /* Sender-Prefix.pch */,
+				A2F7BA311846D66E00C0E91C /* Zoom-Prefix.pch */,
 				A2F7BA321846D66E00C0E91C /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -292,9 +307,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A2F43EA01847C3C6007E71B0 /* SenderHelper */ = {
+		A2F43EA01847C3C6007E71B0 /* ZoomHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2F43EC81847C3C6007E71B0 /* Build configuration list for PBXNativeTarget "SenderHelper" */;
+			buildConfigurationList = A2F43EC81847C3C6007E71B0 /* Build configuration list for PBXNativeTarget "ZoomHelper" */;
 			buildPhases = (
 				A2F43E9D1847C3C6007E71B0 /* Sources */,
 				A2F43E9E1847C3C6007E71B0 /* Frameworks */,
@@ -304,14 +319,14 @@
 			);
 			dependencies = (
 			);
-			name = SenderHelper;
+			name = ZoomHelper;
 			productName = SenderHelper;
-			productReference = A2F43EA11847C3C6007E71B0 /* SenderHelper.app */;
+			productReference = A2F43EA11847C3C6007E71B0 /* ZoomHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A2F7BA1F1846D66E00C0E91C /* Sender */ = {
+		A2F7BA1F1846D66E00C0E91C /* Zoom */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2F7BA511846D66F00C0E91C /* Build configuration list for PBXNativeTarget "Sender" */;
+			buildConfigurationList = A2F7BA511846D66F00C0E91C /* Build configuration list for PBXNativeTarget "Zoom" */;
 			buildPhases = (
 				91376786819A456C8C90F4FD /* Check Pods Manifest.lock */,
 				A2F7BA1C1846D66E00C0E91C /* Sources */,
@@ -319,14 +334,16 @@
 				A2F7BA1E1846D66E00C0E91C /* Resources */,
 				64F0799C8408428A88F33F03 /* Copy Pods Resources */,
 				A2F43ECF1847C48D007E71B0 /* CopyFiles */,
+				A28504DC185031BD00D82FF9 /* CopyFiles */,
+				A28504DE1850326C00D82FF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Sender;
+			name = Zoom;
 			productName = Sender;
-			productReference = A2F7BA201846D66E00C0E91C /* Sender.app */;
+			productReference = A2F7BA201846D66E00C0E91C /* Zoom.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -355,7 +372,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A2F7BA1B1846D66E00C0E91C /* Build configuration list for PBXProject "Sender" */;
+			buildConfigurationList = A2F7BA1B1846D66E00C0E91C /* Build configuration list for PBXProject "Zoom" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -383,8 +400,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A2F7BA1F1846D66E00C0E91C /* Sender */,
-				A2F43EA01847C3C6007E71B0 /* SenderHelper */,
+				A2F7BA1F1846D66E00C0E91C /* Zoom */,
+				A2F43EA01847C3C6007E71B0 /* ZoomHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -447,6 +464,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		A28504DE1850326C00D82FF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n# WARNING: You may have to run Clean in Xcode after changing CODE_SIGN_IDENTITY!\n\n# Verify that $CODE_SIGN_IDENTITY is set\nif [ -z \"${CODE_SIGN_IDENTITY}\" ] ; then\necho \"CODE_SIGN_IDENTITY needs to be set for framework code-signing!\"\n\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\nexit 1\nelse\n# Code-signing is optional for non-release builds.\nexit 0\nfi\nfi\n\nif [ -z \"${CODE_SIGN_ENTITLEMENTS}\" ] ; then\necho \"CODE_SIGN_ENTITLEMENTS needs to be set for framework code-signing!\"\n\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\nexit 1\nelse\n# Code-signing is optional for non-release builds.\nexit 0\nfi\nfi\n\nSAVEIFS=$IFS\nIFS=$(echo -en \"\\n\\b\")\n\nFRAMEWORK_DIR=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n\n# Loop through all frameworks\nFRAMEWORKS=`find \"${FRAMEWORK_DIR}\" -type d -name \"*.framework\" -or -name \"*.dylib\" | sed -e \"s/\\(.*framework\\)/\\1\\/Versions\\/A\\//\"`\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\n\necho \"Found:\"\necho \"${FRAMEWORKS}\"\n\nfor FRAMEWORK in $FRAMEWORKS;\ndo\necho \"Signing '${FRAMEWORK}'\"\n`codesign --force --verbose --sign \"${CODE_SIGN_IDENTITY}\" --entitlements \"${CODE_SIGN_ENTITLEMENTS}\" \"${FRAMEWORK}\"`\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\ndone\n\n# restore $IFS\nIFS=$SAVEIFS\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -557,13 +587,13 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SenderHelper/SenderHelper-Prefix.pch";
+				GCC_PREFIX_HEADER = "SenderHelper/ZoomHelper-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SenderHelper/SenderHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "SenderHelper/ZoomHelper-Info.plist";
+				PRODUCT_NAME = ZoomHelper;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -576,9 +606,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SenderHelper/SenderHelper-Prefix.pch";
-				INFOPLIST_FILE = "SenderHelper/SenderHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SenderHelper/ZoomHelper-Prefix.pch";
+				INFOPLIST_FILE = "SenderHelper/ZoomHelper-Info.plist";
+				PRODUCT_NAME = ZoomHelper;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -659,11 +689,17 @@
 				CODE_SIGN_ENTITLEMENTS = Sender/Sender.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/brad/Projects/Actie/Sender/sender-osx/menulet",
+					.,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sender/Sender-Prefix.pch";
-				INFOPLIST_FILE = "Sender/Sender-Info.plist";
+				GCC_PREFIX_HEADER = "Sender/Zoom-Prefix.pch";
+				INFOPLIST_FILE = "Sender/Zoom-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zoom;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -676,11 +712,17 @@
 				CODE_SIGN_ENTITLEMENTS = Sender/Sender.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/brad/Projects/Actie/Sender/sender-osx/menulet",
+					.,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Sender/Sender-Prefix.pch";
-				INFOPLIST_FILE = "Sender/Sender-Info.plist";
+				GCC_PREFIX_HEADER = "Sender/Zoom-Prefix.pch";
+				INFOPLIST_FILE = "Sender/Zoom-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zoom;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -688,15 +730,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A2F43EC81847C3C6007E71B0 /* Build configuration list for PBXNativeTarget "SenderHelper" */ = {
+		A2F43EC81847C3C6007E71B0 /* Build configuration list for PBXNativeTarget "ZoomHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2F43EC91847C3C6007E71B0 /* Debug */,
 				A2F43ECA1847C3C6007E71B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		A2F7BA1B1846D66E00C0E91C /* Build configuration list for PBXProject "Sender" */ = {
+		A2F7BA1B1846D66E00C0E91C /* Build configuration list for PBXProject "Zoom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2F7BA4F1846D66F00C0E91C /* Debug */,
@@ -705,7 +748,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2F7BA511846D66F00C0E91C /* Build configuration list for PBXNativeTarget "Sender" */ = {
+		A2F7BA511846D66F00C0E91C /* Build configuration list for PBXNativeTarget "Zoom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2F7BA521846D66F00C0E91C /* Debug */,
